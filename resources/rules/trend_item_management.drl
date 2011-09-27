@@ -1,0 +1,162 @@
+# For informational purposes only. To manage rules that affect the process refer to DROOLS Guvnor
+# Following rules know nothing about MediationResult object because they can also used outside of mediation process,
+# when manually creating an order for example.
+
+package trend_item_management
+#imports
+import com.sapienter.jbilling.server.item.db.ItemDTO
+import com.sapienter.jbilling.server.order.db.OrderLineDTO
+import com.sapienter.jbilling.server.order.db.OrderDTO
+import com.sapienter.jbilling.server.user.ContactDTOEx
+import com.sapienter.jbilling.server.item.tasks.SubscriptionResult
+import com.sapienter.jbilling.server.order.OrderLineBL
+import com.sapienter.jbilling.server.order.OrderBL
+import com.sapienter.jbilling.server.item.tasks.PricingResult
+import com.sapienter.jbilling.server.user.UserDTOEx
+import java.math.BigDecimal
+import java.util.List
+import org.apache.log4j.Logger
+
+#globals
+global org.apache.log4j.Logger LOG
+
+
+rule 'Canada GST'
+	dialect 'mvel'
+	when
+		ContactDTOEx( countryCode == "CA" )
+		$order : OrderDTO( )
+		not ( exists ( OrderLineDTO( itemId == 11 ) from $order.lines ) )
+	then
+		OrderLineBL.addItem($order, 11);
+		update($order);
+		LOG.debug("RULE: Adding GST");
+end
+
+rule 'bundle A - 1000 clicks plan'
+	dialect 'mvel'
+	when
+		$order : OrderDTO( )
+		OrderLineDTO( itemId == 12 ) from $order.lines # P-01
+		not( OrderLineDTO( itemId == 17 ) from $order.lines )
+	then
+		# add account maintenance fee
+		OrderLineBL.addItem($order, 17);
+		update($order);
+		LOG.debug("RULE: Adding discounted account maintenance fee");
+end
+
+rule "bundle A - included units"
+	dialect "mvel"
+	when
+		$order : OrderDTO( )
+		$line : OrderLineDTO( itemId == 16, $quantity : quantity ) from $order.lines
+		SubscriptionResult( userId == $order.userId, itemId == 12, subscribed == true )
+		$pricing : PricingResult(userId == $order.userId, itemId == 13)
+	then
+		$order.getLines().remove($line);
+		OrderLineBL.addItem($order, 13, new Integer($quantity.intValue()), $pricing.getPrice());
+		update($order);
+		LOG.debug("RULE: Swaped from generic to included in plan");
+end
+
+rule "generic clicks without plan"
+	dialect "mvel"
+	when
+		$order : OrderDTO( )
+		$line : OrderLineDTO( itemId == 16, $quantity : quantity ) from $order.lines
+		SubscriptionResult( userId == $order.userId, itemId == 12, subscribed == false )
+		$pricing : PricingResult(userId == $order.userId, itemId == 14)
+	then
+		$order.getLines().remove($line);
+		OrderLineBL.addItem($order, 14, new Integer($quantity.intValue()), $pricing.getPrice());
+		update($order);
+		LOG.debug("RULE: Swaped from generic to normal");
+end
+
+rule "bundle A - paid tier 1"
+	dialect "mvel"
+	when
+		$order : OrderDTO( )
+		$line : OrderLineDTO( quantity.intValue > 1000, itemId == 13, $quantity : quantity) from $order.lines
+		$pricing : PricingResult(userId == $order.userId, itemId == 14)
+	then
+		OrderLineBL.addItem($order, 14, new Integer($quantity.intValue() - 1000), $pricing.getPrice()); 
+		update($order);
+		$line.setQuantity(1000);
+		LOG.debug("RULE: bundle A - paid tier 1");
+end
+
+rule 'subscription - 1000 clicks plan'
+	dialect 'java'
+	salience 100 # run first
+	no-loop      # run once
+	when
+		$order : OrderDTO( )
+		not( exists( SubscriptionResult( userId == $order.userId, itemId == 12 ) ) ) # P-01
+	then
+		# insert a subscription result for the "1000 monthly clicks" plan
+		# new instance of SubscriptionResult will resolve the subscription status
+		# so it can be checked as needed in other rules.
+		insert( new SubscriptionResult($order, 12) );
+
+		# insert a price request for the standard click (14)
+		PricingResult request = new PricingResult(14, $order.getUserId(), 1); 
+		LOG.debug("RULE: added subscription and pricing requests:" + request);
+		insert( request );
+		request = new PricingResult(13, $order.getUserId(), 1); 
+		insert( request );        
+		LOG.debug("RULE: subscription - 1000 clicks plan");
+end
+
+rule 'logger'
+	dialect 'mvel'
+	when
+		$order : OrderDTO()
+	then
+		LOG.debug("RULE: Running for Order " + $order + " user " + $order.getUserId());
+end
+
+rule 'pr logger'
+	dialect 'mvel'
+	when
+		$result : PricingResult()
+	then
+		LOG.debug("RULE: Running for result " + $result);
+end
+
+rule '11 cents click'
+	dialect 'mvel'
+	salience 50	
+	when
+		#user : UserDTOEx( userName == "twilson" )
+		result : PricingResult( itemId == 14, userId == 12 , price ==  null  )
+	then
+		result.setPrice( "0.09" );
+		update( result );
+		LOG.debug("RULE: set the price, now result " + result);
+end
+
+rule '9 cents clicks'
+	dialect 'mvel'
+	salience 50	
+	when
+		#user : UserDTOEx( userName == "pbright" )
+		result : PricingResult( itemId == 14, userId == 22 , price ==  null  )
+	then
+		result.setPrice( "0.11" );
+		update( result );
+		LOG.debug("RULE: set the price, now result " + result);
+end
+
+rule '5 dollars fee'
+	dialect 'mvel'
+	salience 50	
+	when
+		#user : UserDTOEx( userName == "pbright" )
+		result : PricingResult( itemId == 2, userId == 22 , price ==  null  )
+	then
+		result.setPrice( 5 );
+		update( result );
+		LOG.debug("RULE: set the price, now result " + result);
+end

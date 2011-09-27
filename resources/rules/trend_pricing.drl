@@ -1,0 +1,50 @@
+# For informational purposes only. To manage rules that affect the process refer to DROOLS Guvnor.
+# Following rules know nothing about MediationResult object because they can also used outside of mediation process,
+# when manually creating an order for example.
+
+package trend_pricing
+#imports
+import com.sapienter.jbilling.server.user.UserDTOEx
+import com.sapienter.jbilling.server.item.tasks.PricingResult
+import java.math.BigDecimal;
+import org.apache.log4j.Logger;
+
+#globals
+global org.apache.log4j.Logger LOG;
+
+
+#from row number: 1
+rule "Row 1 customer pricing"
+	salience 50
+	dialect "mvel"
+	when
+		user : UserDTOEx( userName == "pbright" )
+		result : PricingResult( itemId == "14" , price == ( null ) )
+	then
+		result.setPrice( "0.11" );
+		update( result );
+end
+
+#from row number: 2
+rule "Row 2 customer pricing"
+	salience 50
+	dialect "mvel"
+	when
+		user : UserDTOEx( userName == "twilson" )
+		result : PricingResult( itemId == "14" , price == ( null ) )
+	then
+		result.setPrice( "0.09" );
+		update( result );
+end
+
+#from row number: 3
+rule "Row 3 customer pricing"
+	salience 50
+	dialect "mvel"
+	when
+		user : UserDTOEx( userName == "pbright" )
+		result : PricingResult( itemId == "2" , price == ( null ) )
+	then
+		result.setPrice( "5" );
+		update( result );
+end

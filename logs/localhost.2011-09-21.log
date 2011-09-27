@@ -1,0 +1,97 @@
+Sep 21, 2011 12:19:11 PM org.apache.catalina.core.ApplicationContext log
+INFO: Initializing Spring root WebApplicationContext
+Sep 21, 2011 12:19:13 PM org.apache.catalina.core.ApplicationContext log
+INFO: Initializing Spring FrameworkServlet 'remoting'
+Sep 21, 2011 12:19:13 PM org.apache.catalina.core.ApplicationContext log
+INFO: Initializing Spring FrameworkServlet 'jbilling'
+Sep 21, 2011 12:20:04 PM org.apache.catalina.core.ApplicationDispatcher invoke
+SEVERE: Servlet.service() for servlet com.sapienter.jbilling.client.jspc.report.resultBody_jsp threw exception
+javax.servlet.jsp.JspException: Web error:null
+	at com.sapienter.jbilling.client.list.InsertDataRowTag.doStartTag(InsertDataRowTag.java:256)
+	at com.sapienter.jbilling.client.jspc.report.resultBody_jsp._jspx_meth_jbilling_005finsertDataRow_005f0(Unknown Source)
+	at com.sapienter.jbilling.client.jspc.report.resultBody_jsp._jspService(Unknown Source)
+	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:646)
+	at org.apache.catalina.core.ApplicationDispatcher.doInclude(ApplicationDispatcher.java:551)
+	at org.apache.catalina.core.ApplicationDispatcher.include(ApplicationDispatcher.java:488)
+	at org.apache.jasper.runtime.JspRuntimeLibrary.include(JspRuntimeLibrary.java:968)
+	at org.apache.jasper.runtime.PageContextImpl.include(PageContextImpl.java:621)
+	at org.apache.struts.tiles.TilesUtilImpl.doInclude(TilesUtilImpl.java:137)
+	at org.apache.struts.tiles.TilesUtil.doInclude(TilesUtil.java:177)
+	at org.apache.struts.taglib.tiles.InsertTag.doInclude(InsertTag.java:756)
+	at org.apache.struts.taglib.tiles.InsertTag$InsertHandler.doEndTag(InsertTag.java:881)
+	at org.apache.struts.taglib.tiles.InsertTag.doEndTag(InsertTag.java:473)
+	at com.sapienter.jbilling.client.jspc.layouts.mainLayout_jsp._jspx_meth_tiles_005finsert_005f3(Unknown Source)
+	at com.sapienter.jbilling.client.jspc.layouts.mainLayout_jsp._jspService(Unknown Source)
+	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:646)
+	at org.apache.catalina.core.ApplicationDispatcher.doInclude(ApplicationDispatcher.java:551)
+	at org.apache.catalina.core.ApplicationDispatcher.include(ApplicationDispatcher.java:488)
+	at org.apache.jasper.runtime.JspRuntimeLibrary.include(JspRuntimeLibrary.java:968)
+	at org.apache.jasper.runtime.PageContextImpl.include(PageContextImpl.java:621)
+	at org.apache.struts.tiles.TilesUtilImpl.doInclude(TilesUtilImpl.java:137)
+	at org.apache.struts.tiles.TilesUtil.doInclude(TilesUtil.java:177)
+	at org.apache.struts.taglib.tiles.InsertTag.doInclude(InsertTag.java:756)
+	at org.apache.struts.taglib.tiles.InsertTag$InsertHandler.doEndTag(InsertTag.java:881)
+	at org.apache.struts.taglib.tiles.InsertTag.doEndTag(InsertTag.java:473)
+	at com.sapienter.jbilling.client.jspc.report.result_jsp._jspx_meth_tiles_005finsert_005f0(Unknown Source)
+	at com.sapienter.jbilling.client.jspc.report.result_jsp._jspService(Unknown Source)
+	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:646)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:436)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:374)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:302)
+	at org.apache.struts.action.RequestProcessor.doForward(RequestProcessor.java:1069)
+	at org.apache.struts.tiles.TilesRequestProcessor.doForward(TilesRequestProcessor.java:274)
+	at org.apache.struts.action.RequestProcessor.processForwardConfig(RequestProcessor.java:455)
+	at org.apache.struts.tiles.TilesRequestProcessor.processForwardConfig(TilesRequestProcessor.java:320)
+	at org.apache.struts.action.RequestProcessor.process(RequestProcessor.java:279)
+	at org.apache.struts.action.ActionServlet.process(ActionServlet.java:1482)
+	at org.apache.struts.action.ActionServlet.doPost(ActionServlet.java:525)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:637)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at com.sapienter.jbilling.client.user.MenuSelectionFilter.doFilter(MenuSelectionFilter.java:99)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at com.sapienter.jbilling.client.user.UserAuthenticationFilter.doFilter(UserAuthenticationFilter.java:156)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:191)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:128)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:293)
+	at org.apache.coyote.http11.Http11AprProcessor.process(Http11AprProcessor.java:859)
+	at org.apache.coyote.http11.Http11AprProtocol$Http11ConnectionHandler.process(Http11AprProtocol.java:574)
+	at org.apache.tomcat.util.net.AprEndpoint$Worker.run(AprEndpoint.java:1527)
+	at java.lang.Thread.run(Thread.java:679)
+Sep 21, 2011 12:23:08 PM org.apache.catalina.core.ApplicationContext log
+INFO: Destroying Spring FrameworkServlet 'remoting'
+Sep 21, 2011 12:23:08 PM org.apache.catalina.core.ApplicationContext log
+INFO: Destroying Spring FrameworkServlet 'jbilling'
+Sep 21, 2011 12:23:08 PM org.apache.catalina.core.ApplicationContext log
+INFO: Closing Spring root WebApplicationContext
+Sep 21, 2011 12:24:31 PM org.apache.catalina.core.ApplicationContext log
+INFO: Initializing Spring root WebApplicationContext
+Sep 21, 2011 12:24:32 PM org.apache.catalina.core.ApplicationContext log
+INFO: Initializing Spring FrameworkServlet 'remoting'
+Sep 21, 2011 12:24:32 PM org.apache.catalina.core.ApplicationContext log
+INFO: Initializing Spring FrameworkServlet 'jbilling'
+Sep 21, 2011 12:26:51 PM org.apache.catalina.core.ApplicationContext log
+INFO: Destroying Spring FrameworkServlet 'remoting'
+Sep 21, 2011 12:26:51 PM org.apache.catalina.core.ApplicationContext log
+INFO: Destroying Spring FrameworkServlet 'jbilling'
+Sep 21, 2011 12:26:51 PM org.apache.catalina.core.ApplicationContext log
+INFO: Closing Spring root WebApplicationContext

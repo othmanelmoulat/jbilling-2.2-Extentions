@@ -1,0 +1,138 @@
+Sep 26, 2011 3:40:58 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: Loaded APR based Apache Tomcat Native library 1.1.20.
+Sep 26, 2011 3:40:58 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+Sep 26, 2011 3:40:58 PM org.apache.coyote.http11.Http11AprProtocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8080
+Sep 26, 2011 3:40:58 PM org.apache.coyote.ajp.AjpAprProtocol init
+INFO: Initializing Coyote AJP/1.3 on ajp-8009
+Sep 26, 2011 3:40:58 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 781 ms
+Sep 26, 2011 3:40:58 PM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Sep 26, 2011 3:40:58 PM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.20
+Sep 26, 2011 3:41:18 PM org.apache.cxf.transport.servlet.CXFServlet updateContext
+INFO: Load the bus with application context
+Sep 26, 2011 3:41:19 PM org.apache.cxf.bus.spring.BusApplicationContext getConfigResources
+INFO: No cxf.xml configuration file detected, relying on defaults.
+Sep 26, 2011 3:41:20 PM org.apache.cxf.transport.servlet.AbstractCXFServlet replaceDestinationFactory
+INFO: Replaced the http destination factory with servlet transport factory
+Sep 26, 2011 3:41:22 PM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive drools-guvnor.war
+Sep 26, 2011 3:41:34 PM org.apache.coyote.http11.Http11AprProtocol start
+INFO: Starting Coyote HTTP/1.1 on http-8080
+Sep 26, 2011 3:41:34 PM org.apache.coyote.ajp.AjpAprProtocol start
+INFO: Starting Coyote AJP/1.3 on ajp-8009
+Sep 26, 2011 3:41:34 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 35341 ms
+Sep 26, 2011 5:25:32 PM org.apache.coyote.http11.Http11AprProtocol pause
+INFO: Pausing Coyote HTTP/1.1 on http-8080
+Sep 26, 2011 5:25:32 PM org.apache.coyote.ajp.AjpAprProtocol pause
+INFO: Pausing Coyote AJP/1.3 on ajp-8009
+Sep 26, 2011 5:25:33 PM org.apache.catalina.core.StandardService stop
+INFO: Stopping service Catalina
+Sep 26, 2011 8:58:18 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: Loaded APR based Apache Tomcat Native library 1.1.20.
+Sep 26, 2011 8:58:18 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+Sep 26, 2011 8:58:18 PM org.apache.coyote.http11.Http11AprProtocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8080
+Sep 26, 2011 8:58:18 PM org.apache.coyote.ajp.AjpAprProtocol init
+INFO: Initializing Coyote AJP/1.3 on ajp-8009
+Sep 26, 2011 8:58:18 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 602 ms
+Sep 26, 2011 8:58:18 PM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Sep 26, 2011 8:58:18 PM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.20
+Sep 26, 2011 8:58:29 PM org.apache.cxf.transport.servlet.CXFServlet updateContext
+INFO: Load the bus with application context
+Sep 26, 2011 8:58:29 PM org.apache.cxf.bus.spring.BusApplicationContext getConfigResources
+INFO: No cxf.xml configuration file detected, relying on defaults.
+Sep 26, 2011 8:58:30 PM org.apache.cxf.transport.servlet.AbstractCXFServlet replaceDestinationFactory
+INFO: Replaced the http destination factory with servlet transport factory
+Sep 26, 2011 8:58:32 PM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive drools-guvnor.war
+Sep 26, 2011 8:58:38 PM org.apache.coyote.http11.Http11AprProtocol start
+INFO: Starting Coyote HTTP/1.1 on http-8080
+Sep 26, 2011 8:58:38 PM org.apache.coyote.ajp.AjpAprProtocol start
+INFO: Starting Coyote AJP/1.3 on ajp-8009
+Sep 26, 2011 8:58:38 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 20609 ms
+Sep 26, 2011 9:39:42 PM org.apache.coyote.http11.Http11AprProtocol pause
+INFO: Pausing Coyote HTTP/1.1 on http-8080
+Sep 26, 2011 9:39:42 PM org.apache.coyote.ajp.AjpAprProtocol pause
+INFO: Pausing Coyote AJP/1.3 on ajp-8009
+Sep 26, 2011 9:39:43 PM org.apache.catalina.core.StandardService stop
+INFO: Stopping service Catalina
+Sep 26, 2011 9:39:46 PM org.apache.coyote.http11.Http11AprProtocol destroy
+INFO: Stopping Coyote HTTP/1.1 on http-8080
+Sep 26, 2011 9:39:46 PM org.apache.coyote.ajp.AjpAprProtocol destroy
+INFO: Stopping Coyote AJP/1.3 on ajp-8009
+Sep 26, 2011 9:39:49 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: Loaded APR based Apache Tomcat Native library 1.1.20.
+Sep 26, 2011 9:39:49 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+Sep 26, 2011 9:39:49 PM org.apache.coyote.http11.Http11AprProtocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8080
+Sep 26, 2011 9:39:49 PM org.apache.coyote.ajp.AjpAprProtocol init
+INFO: Initializing Coyote AJP/1.3 on ajp-8009
+Sep 26, 2011 9:39:49 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 920 ms
+Sep 26, 2011 9:39:49 PM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Sep 26, 2011 9:39:49 PM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.20
+Sep 26, 2011 9:40:03 PM org.apache.cxf.transport.servlet.CXFServlet updateContext
+INFO: Load the bus with application context
+Sep 26, 2011 9:40:04 PM org.apache.cxf.bus.spring.BusApplicationContext getConfigResources
+INFO: No cxf.xml configuration file detected, relying on defaults.
+Sep 26, 2011 9:40:04 PM org.apache.cxf.transport.servlet.AbstractCXFServlet replaceDestinationFactory
+INFO: Replaced the http destination factory with servlet transport factory
+Sep 26, 2011 9:40:06 PM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive drools-guvnor.war
+Sep 26, 2011 9:40:14 PM org.apache.coyote.http11.Http11AprProtocol start
+INFO: Starting Coyote HTTP/1.1 on http-8080
+Sep 26, 2011 9:40:14 PM org.apache.coyote.ajp.AjpAprProtocol start
+INFO: Starting Coyote AJP/1.3 on ajp-8009
+Sep 26, 2011 9:40:14 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 24493 ms
+Sep 26, 2011 10:07:59 PM org.apache.coyote.http11.Http11AprProtocol pause
+INFO: Pausing Coyote HTTP/1.1 on http-8080
+Sep 26, 2011 10:07:59 PM org.apache.coyote.ajp.AjpAprProtocol pause
+INFO: Pausing Coyote AJP/1.3 on ajp-8009
+Sep 26, 2011 10:08:00 PM org.apache.catalina.core.StandardService stop
+INFO: Stopping service Catalina
+Sep 26, 2011 10:08:01 PM org.apache.coyote.http11.Http11AprProtocol destroy
+INFO: Stopping Coyote HTTP/1.1 on http-8080
+Sep 26, 2011 10:08:01 PM org.apache.coyote.ajp.AjpAprProtocol destroy
+INFO: Stopping Coyote AJP/1.3 on ajp-8009
+Sep 26, 2011 11:45:55 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: Loaded APR based Apache Tomcat Native library 1.1.20.
+Sep 26, 2011 11:45:55 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+Sep 26, 2011 11:45:55 PM org.apache.coyote.http11.Http11AprProtocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8080
+Sep 26, 2011 11:45:55 PM org.apache.coyote.ajp.AjpAprProtocol init
+INFO: Initializing Coyote AJP/1.3 on ajp-8009
+Sep 26, 2011 11:45:55 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 639 ms
+Sep 26, 2011 11:45:56 PM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Sep 26, 2011 11:45:56 PM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.20
+Sep 26, 2011 11:46:07 PM org.apache.cxf.transport.servlet.CXFServlet updateContext
+INFO: Load the bus with application context
+Sep 26, 2011 11:46:08 PM org.apache.cxf.bus.spring.BusApplicationContext getConfigResources
+INFO: No cxf.xml configuration file detected, relying on defaults.
+Sep 26, 2011 11:46:08 PM org.apache.cxf.transport.servlet.AbstractCXFServlet replaceDestinationFactory
+INFO: Replaced the http destination factory with servlet transport factory
+Sep 26, 2011 11:46:10 PM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive drools-guvnor.war
+Sep 26, 2011 11:46:17 PM org.apache.coyote.http11.Http11AprProtocol start
+INFO: Starting Coyote HTTP/1.1 on http-8080
+Sep 26, 2011 11:46:17 PM org.apache.coyote.ajp.AjpAprProtocol start
+INFO: Starting Coyote AJP/1.3 on ajp-8009
+Sep 26, 2011 11:46:17 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 21402 ms

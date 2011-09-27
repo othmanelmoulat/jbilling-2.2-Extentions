@@ -1,0 +1,322 @@
+# For informational purposes only. To manage rules that affect the process refer to DROOLS Guvnor
+
+package trend_mediation
+#imports
+import com.sapienter.jbilling.server.item.PricingField
+import com.sapienter.jbilling.server.mediation.task.MediationResult
+import com.sapienter.jbilling.server.order.db.OrderLineDTO
+import com.sapienter.jbilling.server.order.db.OrderDTO
+import com.sapienter.jbilling.server.item.db.ItemDTO
+import com.sapienter.jbilling.server.item.db.ItemDAS
+import com.sapienter.jbilling.server.user.UserBL
+import com.sapienter.jbilling.server.order.OrderBL
+import com.sapienter.jbilling.server.order.OrderLineBL
+import com.sapienter.jbilling.server.item.tasks.PricingResult
+import com.sapienter.jbilling.server.user.db.CompanyDTO
+import com.sapienter.jbilling.server.user.ContactBL
+import com.sapienter.jbilling.server.order.db.OrderDAS
+import com.sapienter.jbilling.common.Constants
+import java.math.BigDecimal
+import java.util.List
+import org.apache.log4j.Logger
+
+#globals
+global org.apache.log4j.Logger LOG
+
+function int convert_to_minutes(Integer seconds) {
+	return ((int)  Math.ceil(seconds / 60)) + 1;
+}
+
+function int getDefaultCurrency(Integer userId) {
+    return new UserBL(userId).getCurrencyId();
+}
+
+function Integer getUserIdFromUsername(String username, Integer entityId) {
+    UserBL user = new UserBL(username, entityId);
+    return user.getEntity() != null ? user.getEntity().getUserId() : null;
+}
+
+function OrderLineDTO newLine(Integer itemId, BigDecimal quantity) {
+    OrderLineDTO line =  new OrderLineDTO();
+    line.setItemId(itemId);
+    line.setQuantity(quantity);
+    line.setDefaults();
+    return line;
+}
+
+function PricingResult priceRequest(Integer itemId, MediationResult result) {
+    PricingResult pricing = new PricingResult(itemId, result.getUserId(), result.getCurrencyId());
+    pricing.setPricingFieldsResultId(result.getId());
+    return pricing;
+}
+
+# updates the current order
+function void addLine(MediationResult result) {
+	result.setOldLines(OrderLineBL.copy(result.getCurrentOrder().getLines()));
+	if (!result.getLines().isEmpty()) {
+		OrderLineBL.addLine(result.getCurrentOrder(), result.getLines().get(0), false);
+	}
+}
+
+# ----------------- Steps 1-7, see Chapter 6 in Telecom Guide --------------------
+
+# Step 1: Start
+rule 'user setter'
+	dialect 'mvel'
+	no-loop  #because the user might be wrong and the set gets a null
+	when
+		$result : MediationResult(step == MediationResult.STEP_1_START, userId == null)
+		$field : PricingField( name == "username", resultId == $result.id)
+		$company : CompanyDTO( ) # needed to determine a user by its user name
+	then
+		modify( $result ) {
+			setUserId( getUserIdFromUsername($field.getStrValue(), $company.getId()) );
+		}
+		LOG.info("RULE: The user " + $field.getStrValue() + " was set to " + $result.getUserId() + " record" + $result.getRecordKey());
+end
+
+rule 'date setter'
+	dialect 'mvel'
+	when
+		$result : MediationResult(step == MediationResult.STEP_1_START, eventDate == null)
+		$field : PricingField( name == "event_date", resultId == $result.id)
+	then
+		modify( $result ) {
+			setEventDate( $field.getDateValue() );
+		}
+		LOG.info("RULE: day set to " + $result.getEventDate() + " record" + $result.getRecordKey());
+end
+
+rule 'transition from start to after user'
+	dialect 'mvel'
+	when
+		$result : MediationResult(step == MediationResult.STEP_1_START, userId != null, eventDate != null, currencyId == null) 
+		# only one record for a given user at a time
+		not( exists( MediationResult( $result.userId == userId, step > MediationResult.STEP_1_START) ) )
+	then
+		modify( $result ) {
+			setStep(MediationResult.STEP_2_AFTER_USER);
+		}
+		LOG.info("RULE: transition from start to after user record" + $result.getRecordKey());
+end
+
+# Step 2: After User
+rule 'currency setter'
+	dialect 'mvel'
+	when
+		$result : MediationResult(step == MediationResult.STEP_2_AFTER_USER, currencyId == null)
+	then
+		modify( $result ) {
+			setCurrencyId( getDefaultCurrency($result.getUserId()) );
+		}
+		LOG.info("RULE: The currency was set to " + $result.getCurrencyId() + " record" + $result.getRecordKey());
+end
+
+rule "transition from after user to current order"
+	dialect 'mvel'
+	when
+		$result : MediationResult(step == MediationResult.STEP_2_AFTER_USER, currencyId != null, currentOrder == null)
+	then
+		modify( $result ) {
+			setStep(MediationResult.STEP_3_CURRENT_ORDER);
+		}
+		LOG.info("RULE: transition from after user to current order record" + $result.getRecordKey());
+end
+
+# Step 3: Current Order
+rule 'current order setter'
+	dialect 'mvel'
+	when
+		$result : MediationResult(step == MediationResult.STEP_3_CURRENT_ORDER, currentOrder == null)
+	then
+		modify( $result ) {
+			setCurrentOrder( OrderBL.getOrCreateCurrentOrder($result.getUserId(), $result.getEventDate(), $result.getCurrencyId(), $result.getPersist()) );
+		}
+		LOG.info("RULE: The current order was fetched" + " record" + $result.getRecordKey());
+end
+
+rule "transition from current order to resolve item"
+	when
+		$result : MediationResult(step == MediationResult.STEP_3_CURRENT_ORDER, currentOrder != null, done == false )
+	then
+		modify( $result ) {
+			setStep(MediationResult.STEP_4_RESOLVE_ITEM);
+		}
+		LOG.info("RULE: transition from current order to resolve item record" + $result.getRecordKey());
+end
+
+# Step 4: Resolve Product (Item)
+rule 'resolve banner click and request price'
+	when
+		$result : MediationResult( step == MediationResult.STEP_4_RESOLVE_ITEM )
+		$quantity : PricingField( name == "quantity", resultId == $result.id)
+
+		# Click on front page banner
+		PricingField( name == "item_number", value == "B-03", resultId == $result.id) 
+
+		not ( OrderLineDTO( itemId == 14 ) from $result.lines ) // ensure that we haven't added it yet
+	then
+		$result.getLines().add(newLine(14, new BigDecimal($quantity.getStrValue())));
+		update( $result );
+
+		PricingResult request = priceRequest(14, $result);
+		insert( request );
+		
+		LOG.info("RULE: resolve banner click and request price record" + $result.getRecordKey());
+end
+
+rule 'resolve generic banner click and request price'
+	when
+		$result : MediationResult( step == MediationResult.STEP_4_RESOLVE_ITEM )
+		$quantity : PricingField( name == "quantity", resultId == $result.id)
+
+		# Click on front page banner - generic
+		PricingField( name == "item_number", value == "B-04", resultId == $result.id) 
+
+		not ( OrderLineDTO( itemId == 16 ) from $result.lines ) // ensure that we haven't added it yet
+	then
+		$result.getLines().add(newLine(16, new BigDecimal($quantity.getStrValue())));
+		update( $result );
+
+		PricingResult request = priceRequest(16, $result);
+		insert( request );
+		
+		LOG.info("RULE: resolve generic banner click and request price record" + $result.getRecordKey());
+end
+
+rule 'generic resolve item' # for products other than above
+	dialect 'java'
+	when
+		$result : MediationResult( step == MediationResult.STEP_4_RESOLVE_ITEM )
+		$quantity : PricingField( name == "quantity", resultId == $result.id )
+		$itemNumber: PricingField( name == "item_number", resultId == $result.id) 
+	then
+		String number = $itemNumber.getStrValue();
+		LOG.info("RULE: trying to find item by number " + number);
+		
+		ItemDTO example = new ItemDTO();
+		example.setInternalNumber(number);		
+		List<ItemDTO> items = new ItemDAS().findByExample(example);
+		if (items.isEmpty() || items.size() > 1) {
+			String msg = items.isEmpty() ? "No items found by number " + number : "More than one items found by number " + number;
+			LOG.info("RULE: " + msg + ". Found " + items);
+			$result.setDone(true);
+			$result.addError(msg);
+			retract($result);			
+		} else {
+			ItemDTO item = items.get(0);
+			LOG.info("RULE: found item " + item);
+			
+			$result.getLines().add(newLine(item.getId(), new BigDecimal($quantity.getStrValue())));
+			update( $result );
+
+			PricingResult request = priceRequest(item.getId(), $result);
+			insert( request );
+		}
+end
+
+rule "transition from resolve item to pricing"
+	when
+		$result : MediationResult( step == MediationResult.STEP_4_RESOLVE_ITEM )
+		PricingResult( price == null, pricingFieldsResultId == $result.id )
+	then
+		modify( $result ) {
+			setStep(MediationResult.STEP_5_PRICING);
+		}
+		LOG.info("RULE: transition from resolve item to pricing record" + $result.getRecordKey());
+end
+
+# Step 5: Pricing
+# should run after the price was set in trend_item_management and trend_pricing packages
+rule 'price assignment'
+	when
+		$result : MediationResult( step < MediationResult.STEP_6_ITEM_MANAGEMENT )
+		$price : PricingResult( pricingFieldsResultId == $result.id, price != null ) # ensure that pricing rules has set price
+		$line : OrderLineDTO( itemId == $price.itemId) from $result.lines
+	then
+		$line.setPrice( $price.getPrice() );
+		update( $result );
+		LOG.info("RULE: price assignment record" + $result.getRecordKey());
+end
+
+rule "transition from pricing to item"
+	salience -10 # has to run after the pricing rules had a chance of setting the price
+	when
+		$result : MediationResult(step == MediationResult.STEP_5_PRICING)
+		PricingResult(pricingFieldsResultId == $result.id ) # probably not needed
+	then
+		modify( $result ) {
+			setStep(MediationResult.STEP_6_ITEM_MANAGEMENT);
+		}
+		LOG.info("RULE: transition from pricing to item mgmt record" + $result.getRecordKey());
+end
+
+# Step 6: Item Management
+rule 'line creation'
+	when
+		$result : MediationResult(step == MediationResult.STEP_6_ITEM_MANAGEMENT, oldLines == null )
+	then
+		addLine($result); # will add the first line to the current order and set oldLines
+		update($result);
+		
+		# to allow item management rules
+		insert($result.getCurrentOrder());
+		ContactBL contact = new ContactBL();
+		contact.set($result.userId);
+		insert(contact.getDTO()); # to set tax
+		
+		LOG.info("RULE: line creation");
+end
+
+rule "calculate tax on order total"
+	dialect 'java'
+	salience -10 # let all the item management rules fire first
+	when
+		$order : OrderDTO()
+		$taxLine : OrderLineDTO(itemId == 11) from $order.lines
+		$result : MediationResult( step == MediationResult.STEP_6_ITEM_MANAGEMENT, oldLines != null ) # probably not needed
+	then		
+		BigDecimal total = BigDecimal.ZERO;
+		for (OrderLineDTO line : $order.getLines()) {
+			if ($taxLine.getItemId() != line.getItemId()) {
+				total = total.add(line.getAmount());
+			}
+		}
+		
+		BigDecimal amount = total.divide(new BigDecimal("100"), Constants.BIGDECIMAL_SCALE, Constants.BIGDECIMAL_ROUND).multiply($taxLine.getPrice());
+		$taxLine.setAmount(amount.setScale(Constants.BIGDECIMAL_SCALE));
+	
+		LOG.info("RULE: calculating " + $taxLine.getPrice() + "% tax on total: " + total);
+end
+
+rule "transition from item to diffs"
+	salience -10 # let all the item management rules fire first
+	when
+		$result : MediationResult( step == MediationResult.STEP_6_ITEM_MANAGEMENT, oldLines != null )
+		$order : OrderDTO()
+	then
+		modify( $result ) {
+			setStep(MediationResult.STEP_7_DIFF);
+		}
+		LOG.info("RULE: transition from item mgmt to diffs record" + $result.getRecordKey());
+end
+
+# Step 7: Account update
+rule 'resolve diff lines'
+	dialect 'java'
+	when
+		$result : MediationResult( step == MediationResult.STEP_7_DIFF )
+		$company : CompanyDTO()
+	then
+		if ($result.getPersist()) {
+			new OrderDAS().save($result.getCurrentOrder());
+		}
+		$result.setDiffLines(OrderLineBL.diffOrderLines($result.getOldLines(), $result.getCurrentOrder().getLines()));
+		$result.setDone(true);
+		retract($result);
+		retract($result.getCurrentOrder()); #doable because we can count with one record being processed for a given user at a time
+		if ($result.getPersist()) {
+			new OrderBL().checkOrderLineQuantities($result.getOldLines(), $result.getCurrentOrder().getLines(), $company.getId(), $result.getCurrentOrder().getId());
+		}
+		LOG.info("RULE: resolve diff lines record" + $result.getRecordKey());
+end

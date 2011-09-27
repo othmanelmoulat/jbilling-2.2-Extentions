@@ -1,0 +1,41 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: 1.4.2_09 (Sun Microsystems Inc.)
+Built-By: rahul
+Build-Jdk: 1.4.2_09
+Implementation-Title: Commons Digester
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Vendor-Id: org.apache
+Implementation-Version: 1.8.1
+Specification-Title: Commons Digester
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 1.8.1
+X-Compile-Source-JDK: 1.2
+X-Compile-Target-JDK: 1.2
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Import-Package: javax.xml.parsers,org.apache.commons.beanutils,org.apa
+ che.commons.collections,org.apache.commons.digester;version="1.8.1",o
+ rg.apache.commons.digester.parser;version="1.8.1",org.apache.commons.
+ digester.plugins;version="1.8.1",org.apache.commons.digester.plugins.
+ strategies;version="1.8.1",org.apache.commons.digester.substitution;v
+ ersion="1.8.1",org.apache.commons.digester.xmlrules;version="1.8.1",o
+ rg.apache.commons.logging,org.apache.commons.logging.impl,org.w3c.dom
+ ,org.xml.sax,org.xml.sax.helpers
+Bnd-LastModified: 1230712360437
+Export-Package: org.apache.commons.digester.plugins;version="1.8.1",or
+ g.apache.commons.digester.parser;version="1.8.1",org.apache.commons.d
+ igester;version="1.8.1",org.apache.commons.digester.xmlrules;version=
+ "1.8.1",org.apache.commons.digester.substitution;version="1.8.1",org.
+ apache.commons.digester.plugins.strategies;version="1.8.1"
+Bundle-Version: 1.8.1
+Bundle-Description: The Digester package lets you configure an XML to 
+ Java object mapping module    which triggers certain actions called r
+ ules whenever a particular     pattern of nested XML elements is reco
+ gnized.
+Bundle-Name: Commons Digester
+Bundle-DocURL: http://commons.apache.org/digester/
+Bundle-ManifestVersion: 2
+Bundle-Vendor: The Apache Software Foundation
+Bundle-SymbolicName: org.apache.commons.digester
+Tool: Bnd-0.0.238
+
