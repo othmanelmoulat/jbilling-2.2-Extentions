@@ -316,6 +316,44 @@ public class WSTest  extends TestCase {
     		fail("Exception caught:" + e);
     	}
 	}
+    
+    public void testDeleteItem() {
+        
+    	try {
+    		JbillingAPI api = JbillingAPIFactory.getAPI();
+	    	
+    		System.out.println("Getting item");
+	    	ItemDTOEx item = api.getItem(new Integer(3000), new Integer(1), new PricingField[] {} );
+	    	assertEquals(item.getDeleted(), new Integer(0));
+	    	
+	    	/*String description = item.getDescription();
+	    	Integer prMan = item.getPriceManual();
+	    	String number = item.getNumber();
+	    	BigDecimal price = item.getPrice();
+	    	BigDecimal perc = item.getPercentage();
+	    	String promo = item.getPromoCode();
+	
+	    	System.out.println("Changing properties");
+	    	item.setDescription("Another description");
+	    	item.setPriceManual(new Integer(1));
+	    	item.setNumber("NMR-01");
+	    	item.setPrice(new BigDecimal("1.00"));*/
+	    	
+	    	System.out.println("Deleting item");
+	    	api.deleteItem(item);
+	    
+	    	ItemDTOEx itemDeleted = api.getItem(new Integer(3000), new Integer(1), new PricingField[] {} );
+	    	assertEquals(itemDeleted.getDeleted(), new Integer(1));
+	    	
+	    	System.out.println("Done!");
+	    
+	    	
+
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    		fail("Exception caught:" + e);
+    	}
+	}
 
     public void testCurrencyConvert() {
     	try {

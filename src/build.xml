@@ -470,12 +470,14 @@
 
             <formatter type="brief" usefile="false"/>
             <formatter type="xml"/>            
-
-            <test name="com.sapienter.jbilling.server.order.WSTest" todir="${build.test-results.dir}/ws/xml"/>
+        	 <!--<test name="com.sapienter.jbilling.server.item.WSItemDeleteTest" todir="${build.test-results.dir}/ws/xml"/>
+        	  -->          
+        	<test name="com.sapienter.jbilling.server.order.WSTest" todir="${build.test-results.dir}/ws/xml"/>
             <test name="com.sapienter.jbilling.server.user.WSTest" todir="${build.test-results.dir}/ws/xml"/>
             <test name="com.sapienter.jbilling.server.payment.WSTest" todir="${build.test-results.dir}/ws/xml"/>
             <test name="com.sapienter.jbilling.server.item.WSTest" todir="${build.test-results.dir}/ws/xml"/>
             <test name="com.sapienter.jbilling.server.invoice.WSTest" todir="${build.test-results.dir}/ws/xml"/>
+             
         </junit>
 
         <!-- generate testing reports -->

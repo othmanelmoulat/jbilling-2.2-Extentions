@@ -200,4 +200,7 @@ public interface JbillingAPI {
     void updateItemCategory(ItemTypeWS itemType) throws JbillingAPIException;
 
     public void generateRules(String rulesData) throws JbillingAPIException;
+    
+    public void deleteItem(ItemDTOEx item) throws JbillingAPIException;
+    public void deleteItemType(Integer itemTypeId) throws JbillingAPIException;
 }

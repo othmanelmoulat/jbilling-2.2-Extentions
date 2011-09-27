@@ -49,7 +49,7 @@
         <property name="serviceInterface" value="com.sapienter.jbilling.server.util.IWebServicesSessionBean"/>
         <property name="hessian2" value="true"/>
         <property name="username" value="admin"/>
-        <property name="password" value="123qwe"/>
+        <property name="password" value="1234qwe"/>
     </bean>
 
     <bean id="apiClient2" class="org.springframework.remoting.caucho.HessianProxyFactoryBean" lazy-init="true">
