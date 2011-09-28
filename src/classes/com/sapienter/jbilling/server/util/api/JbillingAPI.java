@@ -36,6 +36,7 @@ import com.sapienter.jbilling.server.user.CreateResponseWS;
 import com.sapienter.jbilling.server.user.UserTransitionResponseWS;
 import com.sapienter.jbilling.server.user.UserWS;
 import com.sapienter.jbilling.server.user.ValidatePurchaseWS;
+import com.sapienter.jbilling.server.util.WebServicesCaller;
 import com.sapienter.jbilling.server.entity.AchDTO;
 import com.sapienter.jbilling.server.entity.CreditCardDTO;
 
@@ -202,5 +203,10 @@ public interface JbillingAPI {
     public void generateRules(String rulesData) throws JbillingAPIException;
     
     public void deleteItem(ItemDTOEx item) throws JbillingAPIException;
+    
     public void deleteItemType(Integer itemTypeId) throws JbillingAPIException;
+   
+    public Integer getCallerId() throws JbillingAPIException;
+
+	public Integer getCallerCompanyId() throws JbillingAPIException;
 }

@@ -1,20 +1,20 @@
 ----------------------------------------------------------------
-2011-09-27 15:34:55.807 GMT:
- Booting Derby version The Apache Software Foundation - Apache Derby - 10.2.1.6 - (452058): instance c013800d-0132-ab86-435f-0000016cc030
+2011-09-27 20:45:07.288 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.2.1.6 - (452058): instance c013800d-0132-aca2-4090-000003b85058
 on database directory /home/othman/Development/Java/workspace/jbilling/bin/repository/version/db  
 
 Database Class Loader started - derby.database.classpath=''
 ----------------------------------------------------------------
-2011-09-27 15:34:56.982 GMT:
- Booting Derby version The Apache Software Foundation - Apache Derby - 10.2.1.6 - (452058): instance e03f4017-0132-ab86-435f-0000016cc030
+2011-09-27 20:45:08.088 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.2.1.6 - (452058): instance e03f4017-0132-aca2-4090-000003b85058
 on database directory /home/othman/Development/Java/workspace/jbilling/bin/repository/workspaces/default/db  
 
 Database Class Loader started - derby.database.classpath=''
 
-2011-09-27 15:34:58.689 GMT:
-Shutting down instance e03f4017-0132-ab86-435f-0000016cc030
+2011-09-27 20:45:08.904 GMT:
+Shutting down instance e03f4017-0132-aca2-4090-000003b85058
 ----------------------------------------------------------------
 
-2011-09-27 15:34:59.116 GMT:
-Shutting down instance c013800d-0132-ab86-435f-0000016cc030
+2011-09-27 20:45:09.031 GMT:
+Shutting down instance c013800d-0132-aca2-4090-000003b85058
 ----------------------------------------------------------------

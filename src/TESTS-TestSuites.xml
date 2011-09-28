@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+  <testsuite errors="0" failures="0" hostname="linux-i3d8" id="0" name="WSItemDeleteTest" package="com.sapienter.jbilling.server.item" tests="1" time="0.623" timestamp="2011-09-27T15:20:29">
+      <properties>
+          <property name="torque.home.dir" value="/home/user/tools/torque-gen-3.2" />
+
+          <property name="file.encoding.pkg" value="sun.io" />
+
+          <property name="source.client.package.dir" value="com/sapienter/jbilling/client" />
+
+          <property name="java.home" value="/usr/lib/jvm/java-1.6.0-openjdk-1.6.0/jre" />
+
+          <property name="source.mediation.descriptor.dir" value="/home/othman/Development/Java/workspace/jbilling/src/descriptors/mediation" />
+
+          <property name="server.dir" value="/home/othman/Development/Java/workspace/jbilling/src/../" />
+
+          <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-1.6.0-openjdk-1.6.0/jre/lib/endorsed" />
+
+          <property name="process.run_list" value="true" />
+
+          <property name="struts.home.tag.dir" value="/home/othman/Development/Java/workspace/jbilling/src/libs/client/WEB-INF" />
+
+          <property name="sun.os.patch.level" value="unknown" />
+
+          <property name="java.vendor.url" value="http://java.sun.com/" />
+
+          <property name="java.version" value="1.6.0_22" />
+
+          <property name="eclipse.pdebuild.home" value="/home/othman/eclipse/plugins/org.eclipse.pde.build_3.7.0.v20110512-1320/.//" />
+
+          <property name="smtp_username" value="" />
+
+          <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi" />
+
+          <property name="ant.project.invoked-targets" value="test-ws" />
+
+          <property name="process.run_partner" value="true" />
+
+          <property name="user.name" value="othman" />
+
+          <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+
+          <property name="sun.jnu.encoding" value="UTF-8" />
+
+          <property name="java.runtime.name" value="OpenJDK Runtime Environment" />
+
+          <property name="email_from" value="admin@yourcompany.com" />
+
+          <property name="libs.dir" value="/home/othman/Development/Java/workspace/jbilling/src/libs" />
+
+          <property name="source.torque.descriptor.dir" value="/home/othman/Development/Java/workspace/jbilling/src/descriptors/torque" />
+
+          <property name="source.documentation.dir" value="/home/othman/Development/Java/workspace/jbilling/src/documentation/user/docs" />
+
+          <property name="java.specification.name" value="Java Platform API Specification" />
+
+          <property name="process.run_mediation" value="true" />
+
+          <property name="path" value="/billing" />
+
+          <property name="user.timezone" value="" />
+
+          <property name="path.separator" value=":" />
+
+          <property name="process.run_ageing" value="true" />
+
+          <property name="file.encoding" value="UTF-8" />
+
+          <property name="ant.project.default-target" value="deploy-local" />
+
+          <property name="sun.java.command" value="org.eclipse.ant.internal.launching.remote.InternalAntRunner -Dorg.eclipse.ant.core.ANT_PROCESS_ID=1317136826161 -Declipse.connect.port=33428 -Declipse.pdebuild.home=/home/othman/eclipse/plugins/org.eclipse.pde.build_3.7.0.v20110512-1320/.// -Declipse.pdebuild.scripts=/home/othman/eclipse/plugins/org.eclipse.pde.build_3.7.0.v20110512-1320/scripts// -Declipse.pdebuild.templates=/home/othman/eclipse/plugins/org.eclipse.pde.build_3.7.0.v20110512-1320/templates// -Dant.home=/home/othman/eclipse/plugins/org.apache.ant_1.8.2.v20110505-1300 -logger org.eclipse.ant.internal.launching.remote.logger.RemoteAntBuildLogger -inputhandler org.eclipse.ant.internal.ui.antsupport.inputhandler.ProxyInputHandler -eclipseTask fatjar.build,net.sf.fjep.anttask.FJBuildTask -eclipseType fatjar.filesource,net.sf.fjep.anttask.FJFileSourceType -eclipseType fatjar.jarsource,net.sf.fjep.anttask.FJJarSourceType -eclipseType fatjar.exclude,net.sf.fjep.anttask.FJExcludeType -eclipseType fatjar.manifest,net.sf.fjep.anttask.FJManifestType -buildfile /home/othman/Development/Java/workspace/jbilling/src/build.xml test-ws" />
+
+          <property name="ant.file" value="/home/othman/Development/Java/workspace/jbilling/src/build.xml" />
+
+          <property name="easymock.dir" value="/home/othman/Development/Java/workspace/jbilling/src/libs/easymock" />
+
+          <property name="base_dir" value="/home/othman/Development/Java/workspace/jbilling/resources/" />
+
+          <property name="java.io.tmpdir" value="/tmp" />
+
+          <property name="spring.test.jar" value="/home/othman/Development/Java/workspace/jbilling/src/libs/spring/spring-test.jar" />
+
+          <property name="TODAY" value="September 27 2011" />
+
+          <property name="user.language" value="en" />
+
+          <property name="line.separator" value="&#xa;" />
+
+          <property name="source.lib.dir" value="/home/othman/Development/Java/workspace/jbilling/src/jars" />
+
+          <property name="client.libs.present" value="true" />
+
+          <property name="source.cs.dir" value="/home/othman/Development/Java/workspace/jbilling/src/cs" />
+
+          <property name="process.run_billing" value="true" />
+
+          <property name="tools.dir" value="/home/othman/Development/Java/workspace/jbilling/src/../" />
+
+          <property name="internal_username" value="jbilling_root" />
+
+          <property name="java.vm.info" value="mixed mode" />
+
+          <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+
+          <property name="version" value="1_1_3" />
+
+          <property name="smtp_server" value="localhost" />
+
+          <property name="build.deploy.dir" value="/home/othman/Development/Java/workspace/jbilling/src/build/deploy" />
+
+          <property name="taglib.home.dir" value="/home/othman/Development/Java/workspace/jbilling/src/libs/client/WEB-INF" />
+
+          <property name="source.sql.dir" value="/home/othman/Development/Java/workspace/jbilling/src/sql" />
+
+          <property name="credit_card_password" value="a_long_secret_key" />
+
+          <property name="deploy.resources.dir" value="/home/othman/Development/Java/workspace/jbilling/src/../resources" />
+
+          <property name="eclipse.pdebuild.templates" value="/home/othman/eclipse/plugins/org.eclipse.pde.build_3.7.0.v20110512-1320/templates//" />
+
+          <property name="java.awt.printerjob" value="sun.print.PSPrinterJob" />
+
+          <property name="rules_scanner_interval" value="60" />
+
+          <property name="source.resources.descriptor.dir" value="/home/othman/Development/Java/workspace/jbilling/src/descriptors/resources" />
+
+          <property name="force_https" value="false" />
+
+          <property name="source.web.descriptor.dir" value="/home/othman/Development/Java/workspace/jbilling/src/descriptors/web" />
+
+          <property name="ant.version" value="Apache Ant(TM) version 1.8.2 compiled on December 20 2010" />
+
+          <property name="build.test.dir" value="/home/othman/Development/Java/workspace/jbilling/src/build/test" />
+
+          <property name="source.dir" value="/home/othman/Development/Java/workspace/jbilling/src" />
+
+          <property name="email_from_name" value="JBilling" />
+
+          <property name="password" value="123qwe" />
+
+          <property name="process.run_order_expire" value="true" />
+
+          <property name="os.name" value="Linux" />
+
+          <property name="java.specification.vendor" value="Sun Microsystems Inc." />
+
+          <property name="java.vm.name" value="OpenJDK Server VM" />
+
+          <property name="source.classes.dir" value="/home/othman/Development/Java/workspace/jbilling/src/classes" />
+
+          <property name="java.library.path" value="/usr/lib/jvm/java-1.6.0-openjdk-1.6.0/jre/lib/i386/client:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0/jre/lib/i386:/usr/lib/mpi/gcc/openmpi/lib:/usr/java/packages/lib/i386:/lib:/usr/lib:/home/othman/eclipse/configuration/org.eclipse.osgi/bundles/587/1/.cp" />
+
+          <property name="eclipse.pdebuild.scripts" value="/home/othman/eclipse/plugins/org.eclipse.pde.build_3.7.0.v20110512-1320/scripts//" />
+
+          <property name="build.view.dir" value="/home/othman/Development/Java/workspace/jbilling/src/build/view" />
+
+          <property name="ant.java.version" value="1.6" />
+
+          <property name="source.spring.descriptor.dir" value="/home/othman/Development/Java/workspace/jbilling/src/descriptors/spring" />
+
+          <property name="basedir" value="/home/othman/Development/Java/workspace/jbilling/src" />
+
+          <property name="java.class.version" value="50.0" />
+
+          <property name="ant.home" value="/home/othman/eclipse/plugins/org.apache.ant_1.8.2.v20110505-1300" />
+
+          <property name="server.web.dir" value="/home/othman/Development/Java/workspace/jbilling/src/..//webapps" />
+
+          <property name="internal_key" value="enterALongStringHere" />
+
+          <property name="process.time" value="" />
+
+          <property name="login_lock" value="/home/othman/Development/Java/workspace/jbilling/temp/jbilling.lock" />
+
+          <property name="sun.boot.library.path" value="/usr/lib/jvm/java-1.6.0-openjdk-1.6.0/jre/lib/i386" />
+
+          <property name="build.dir" value="/home/othman/Development/Java/workspace/jbilling/src/build" />
+
+          <property name="ant.file.type.bop" value="file" />
+
+          <property name="digester.jar" value="/home/othman/Development/Java/workspace/jbilling/src/libs/client/commons-digester-1.8.jar" />
+
+          <property name="sun.management.compiler" value="HotSpot Tiered Compilers" />
+
+          <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment" />
+
+          <property name="source.descriptor.dir" value="/home/othman/Development/Java/workspace/jbilling/src/descriptors" />
+
+          <property name="xdoclet.home.dir" value="/home/othman/Development/Java/workspace/jbilling/src/libs/xdoclet" />
+
+          <property name="credit_card_secure" value="true" />
+
+          <property name="ant.project.name" value="bop" />
+
+          <property name="java.vm.specification.version" value="1.0" />
+
+          <property name="lockout_password" value="totalSecret" />
+
+          <property name="source.test.dir" value="/home/othman/Development/Java/workspace/jbilling/src/test" />
+
+          <property name="process.run_invoice_reminder" value="true" />
+
+          <property name="sun.cpu.isalist" value="" />
+
+          <property name="java.ext.dirs" value="/usr/lib/jvm/java-1.6.0-openjdk-1.6.0/jre/lib/ext:/usr/java/packages/lib/ext" />
+
+          <property name="os.version" value="3.0.4-2-desktop" />
+
+          <property name="libs.client.dir" value="/home/othman/Development/Java/workspace/jbilling/src/libs/client" />
+
+          <property name="smtp_password" value="" />
+
+          <property name="user.home" value="/home/othman" />
+
+          <property name="java.vm.vendor" value="Sun Microsystems Inc." />
+
+          <property name="process.frequency" value="720" />
+
+          <property name="user.dir" value="/home/othman/Development/Java/workspace/jbilling/src" />
+
+          <property name="source.view.dir" value="/home/othman/Development/Java/workspace/jbilling/src/view" />
+
+          <property name="password_encrypt_all" value="true" />
+
+          <property name="image.source.dir" value="c:/bop/image/source" />
+
+          <property name="sun.cpu.endian" value="little" />
+
+          <property name="process.run_provisioning" value="false" />
+
+          <property name="source.common.package.dir" value="com/sapienter/jbilling/common" />
+
+          <property name="java.vm.version" value="20.0-b11" />
+
+          <property name="jbilling.conf.dir" value="/home/othman/Development/Java/workspace/jbilling/src/..//conf" />
+
+          <property name="java.class.path" value="/home/othman/eclipse/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-antlr.jar:/home/othman/eclipse/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-apache-bcel.jar:/home/othman/eclipse/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-apache-bsf.jar:/home/othman/eclipse/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-apache-log4j.jar:/home/othman/eclipse/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-apache-oro.jar:/home/othman/eclipse/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-apache-regexp.jar:/home/othman/eclipse/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-apache-resolver.jar:/home/othman/eclipse/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-apache-xalan2.jar:/home/othman/eclipse/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-commons-logging.jar:/home/othman/eclipse/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-commons-net.jar:/home/othman/eclipse/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-jai.jar:/home/othman/eclipse/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-javamail.jar:/home/othman/eclipse/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-jdepend.jar:/home/othman/eclipse/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-jmf.jar:/home/othman/eclipse/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-jsch.jar:/home/othman/eclipse/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-junit.jar:/home/othman/eclipse/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-junit4.jar:/home/othman/eclipse/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-launcher.jar:/home/othman/eclipse/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-netrexx.jar:/home/othman/eclipse/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-swing.jar:/home/othman/eclipse/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-testutil.jar:/home/othman/eclipse/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant.jar:/home/othman/eclipse/plugins/net.sf.fjep.fatjar_0.0.31/fatjar.jar:/home/othman/eclipse/configuration/org.eclipse.osgi/bundles/50/1/.cp/lib/antdebug.jar:/home/othman/eclipse/configuration/org.eclipse.osgi/bundles/50/1/.cp/lib/remote.jar:/home/othman/eclipse/configuration/org.eclipse.osgi/bundles/51/1/.cp/lib/remoteAnt.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0/lib/tools.jar:/home/othman/eclipse/plugins/org.eclipse.swt.gtk.linux.x86_3.7.0.v3735b.jar" />
+
+          <property name="DSTAMP" value="20110927" />
+
+          <property name="ant.library.dir" value="/home/othman/eclipse/plugins/org.apache.ant_1.8.2.v20110505-1300/lib" />
+
+          <property name="process.run_cc_expire" value="true" />
+
+          <property name="build.api.dir" value="/home/othman/Development/Java/workspace/jbilling/src/build/api" />
+
+          <property name="os.arch" value="i386" />
+
+          <property name="build.designs.dir" value="/home/othman/Development/Java/workspace/jbilling/src/build/designs" />
+
+          <property name="junit.dir" value="/home/othman/Development/Java/workspace/jbilling/src/libs/junit" />
+
+          <property name="sun.java.launcher" value="SUN_STANDARD" />
+
+          <property name="ant.core.lib" value="/home/othman/eclipse/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant.jar" />
+
+          <property name="username" value="admin" />
+
+          <property name="java.vm.specification.vendor" value="Sun Microsystems Inc." />
+
+          <property name="TSTAMP" value="1520" />
+
+          <property name="file.separator" value="/" />
+
+          <property name="java.runtime.version" value="1.6.0_22-b22" />
+
+          <property name="sun.boot.class.path" value="/usr/lib/jvm/java-1.6.0-openjdk-1.6.0/jre/lib/resources.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0/jre/lib/rt.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0/jre/lib/jsse.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0/jre/lib/jce.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0/jre/lib/charsets.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0/jre/lib/netx.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0/jre/lib/plugin.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0/jre/lib/rhino.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0/jre/lib/modules/jdk.boot.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0/jre/classes" />
+
+          <property name="smtp_port" value="25" />
+
+          <property name="build.test-results.dir" value="/home/othman/Development/Java/workspace/jbilling/src/build/test-results" />
+
+          <property name="url" value="http://localhost:8080/manager" />
+
+          <property name="deploy.local.dir" value="/home/othman/Development/Java/workspace/jbilling/src/..//webapps" />
+
+          <property name="ant.file.bop" value="/home/othman/Development/Java/workspace/jbilling/src/build.xml" />
+
+          <property name="user.country" value="US" />
+
+          <property name="drools-api.jar" value="/home/othman/Development/Java/workspace/jbilling/src/libs/drools/drools-api-5.0.1.jar" />
+
+          <property name="image.target.dir" value="c:/bop/image/target" />
+
+          <property name="build.classes.dir" value="/home/othman/Development/Java/workspace/jbilling/src/build/classes" />
+
+          <property name="java.vendor" value="Sun Microsystems Inc." />
+
+          <property name="process.run_penalty" value="true" />
+
+          <property name="source.server.package.dir" value="com/sapienter/jbilling/server" />
+
+          <property name="java.specification.version" value="1.6" />
+
+          <property name="source.rules.dir" value="/home/othman/Development/Java/workspace/jbilling/src/descriptors/rules" />
+
+          <property name="sun.arch.data.model" value="32" />
+
+      </properties>
+
+      <testcase classname="com.sapienter.jbilling.server.item.WSItemDeleteTest" name="testDeleteItem" time="0.609" />
+
+      <system-out><![CDATA[Getting item
+Deleting item 3001
+Done!
+]]></system-out>
+
+      <system-err><![CDATA[log4j:WARN No appenders could be found for logger (org.springframework.context.support.ClassPathXmlApplicationContext).
+log4j:WARN Please initialize the log4j system properly.
+]]></system-err>
+
+  </testsuite>
+</testsuites>

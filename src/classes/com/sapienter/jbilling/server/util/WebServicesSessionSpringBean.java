@@ -34,17 +34,13 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-
 import javax.jws.WebService;
-
 import org.apache.commons.validator.ValidatorException;
 import org.apache.log4j.Logger;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
 import sun.jdbc.rowset.CachedRowSet;
-
 import com.sapienter.jbilling.common.GatewayBL;
 import com.sapienter.jbilling.common.JBCrypto;
 import com.sapienter.jbilling.common.SessionInternalError;
@@ -117,8 +113,7 @@ import com.sapienter.jbilling.server.util.db.CurrencyDAS;
 @WebService(endpointInterface = "com.sapienter.jbilling.server.util.IWebServicesSessionBean")
 public class WebServicesSessionSpringBean implements IWebServicesSessionBean {
 
-	private static final Logger LOG = Logger
-			.getLogger(WebServicesSessionSpringBean.class);
+	private static final Logger LOG = Logger.getLogger(WebServicesSessionSpringBean.class);
 
 	/*
 	 * INVOICES
@@ -1730,11 +1725,11 @@ public class WebServicesSessionSpringBean implements IWebServicesSessionBean {
 		return order.getListIdsByItemType(userId, itemTypeId, number);
 	}
 
-	private Integer getCallerId() {
+	public Integer getCallerId() {
 		return WebServicesCaller.getUserId();
 	}
 
-	private Integer getCallerCompanyId() {
+	public Integer getCallerCompanyId() {
 		return WebServicesCaller.getCompanyId();
 	}
 

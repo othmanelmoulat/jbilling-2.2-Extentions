@@ -653,4 +653,16 @@ public class SpringAPI implements JbillingAPI {
 			throw new JbillingAPIException(e);
 		}
 	}
+
+	@Override
+	public Integer getCallerId() throws JbillingAPIException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Integer getCallerCompanyId() throws JbillingAPIException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

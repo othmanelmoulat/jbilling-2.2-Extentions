@@ -358,6 +358,12 @@ public interface IWebServicesSessionBean {
 	public Integer getAuthPaymentType(Integer userId) throws SessionInternalError;
 
     public void generateRules(String rulesData) throws SessionInternalError;
+    
     public void deleteItem(ItemDTOEx item) throws SessionInternalError;
+    
     public void deleteItemType(Integer itemTypeId) throws SessionInternalError;
+    
+    public Integer getCallerId() throws SessionInternalError;
+	
+	public Integer getCallerCompanyId() throws SessionInternalError;
 }

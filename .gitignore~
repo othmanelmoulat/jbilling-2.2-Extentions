@@ -1,0 +1,12 @@
+**/build/*
+/build
+/build/*
+**/nbproject/*
+/nbproject
+/nbproject/*
+**/registry/*
+/registry
+/registry/*
+/nbproject/private/private.properties
+/nbproject/project.properties
+
